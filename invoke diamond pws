@@ -1,0 +1,29 @@
+function Invoke-Diamond {
+    param (
+       
+        [Parameter(Mandatory = $false)]
+        [validatelength(1,1)]
+        [String]$Letter = '*',
+        [Parameter(Mandatory = $true)]
+        [Int16]$size = 5
+    )
+ 
+    if ($size % 2 -eq 0) {
+        $size--
+    }
+    for ($i = 1; $i -le $size; $i++) {
+        if ($i % 2 -ne 0) {
+            $spaces = ($size - $i) /2
+            Write-Host (' ' * $spaces + ($Letter * $i))
+        }
+         
+    }
+    for ($i = $size - 1; $i -ge 1; $i--) {
+        if ($i % 2 -ne 0){
+        $spaces = ($size - $i) /2
+        Write-Host (' ' * $spaces + ($Letter * $i))
+        }
+    }
+   
+}
+Invoke-Diamond -size 6
